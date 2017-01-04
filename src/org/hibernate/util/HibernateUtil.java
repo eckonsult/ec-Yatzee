@@ -11,7 +11,7 @@ public class HibernateUtil {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
             Configuration cfg = new Configuration();
-            cfg.addAnnotatedClass(org.hibernate.test.Player.class);
+            cfg.addAnnotatedClass(org.hibernate.model.Player.class);
             return cfg.configure().buildSessionFactory();
         
         }

@@ -1,23 +1,20 @@
-package org.hibernate.test;
+package org.hibernate;
  
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.model.Player;
 import org.hibernate.query.Query;
 
 import java.util.*;
 
 import javax.transaction.Transaction;
 
-import org.hibernate.test.Player;
 import org.hibernate.util.HibernateUtil;
  
 public class PlayerManager {
  
     public static void main(String[] args) {
     	PlayerManager mgr = new PlayerManager();
- 
-        
-    	
     	
 //    	mgr.createAndStorePlayer("Hans", "Logger");
  
@@ -108,7 +105,7 @@ public class PlayerManager {
     }
     
     
-    private Player getPlayerByID(int id) {
+    public Player getPlayerByID(int id) {
     	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
     	Player thePlayer = null;
     	try {

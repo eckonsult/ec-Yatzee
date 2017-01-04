@@ -31,7 +31,7 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
  
-        <mapping class="org.hibernate.test.Player"/>
+        <mapping class="org.hibernate.model.Player"/>
 
  
     </session-factory>
