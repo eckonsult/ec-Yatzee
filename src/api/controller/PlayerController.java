@@ -1,5 +1,6 @@
 package api.controller;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -20,7 +21,7 @@ public class PlayerController extends ControllerBase{
     @Path("{id}")
     @GET
     @Produces("application/json")
-    public Response Player(@PathParam("id") int id) throws JSONException {
+    public Response getPlayer(@PathParam("id") int id) throws JSONException {
         
     	if (id < 0) {    		
     		return BadRequestResponse("ID need to be greater then 0.");
@@ -34,4 +35,17 @@ public class PlayerController extends ControllerBase{
         return OkResponse(pl);
     }
     
+    @Path("{id}")
+    @DELETE
+    @Produces("application/json")
+    public Response deletePlayer(@PathParam("id") int id) throws JSONException {
+        
+    	if (id < 0) {    		
+    		return BadRequestResponse("ID need to be greater then 0.");
+    	}
+ 
+     boolean pl = PlayerControllerService.DeletePlayer(id);
+        
+     return OkResponse(pl);
+    }
 }

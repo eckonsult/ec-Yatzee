@@ -71,7 +71,7 @@ public class PlayerManager {
     }
     
     
-    public Player getPlayerByID(int id) {
+    public static Player getPlayerByID(int id) {
     	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
     	Player thePlayer = null;
     	try {
@@ -110,5 +110,29 @@ public class PlayerManager {
     	
     	return result;
     }
+
+
+	public static void deletePlayer(int id) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			Player thePlayer = new Player();
+        	thePlayer.setId(id);
+        	
+        	session.beginTransaction();
+
+        	session.delete(thePlayer);
+ 
+        	session.getTransaction().commit();
+    	}
+        catch (HibernateException ex) {
+        	if (session.getTransaction() != null)
+        		session.getTransaction().rollback();
+        	ex.printStackTrace();	
+        }
+        finally {
+        	session.close();
+        }
+		
+	}
  
 }
