@@ -13,43 +13,9 @@ import org.hibernate.util.HibernateUtil;
  
 public class PlayerManager {
  
-    public static void main(String[] args) {
-    	PlayerManager mgr = new PlayerManager();
-    	
-//    	mgr.createAndStorePlayer("Hans", "Logger");
+    
  
-    	//look for player with specific ID
-//		int searchID = 70;
-//    	Player thePlay = mgr.getPlayerByID(searchID);
-//    	
-//    	if (thePlay == null)
-//			System.out.println("Player not found!");
-//		else
-//    		System.out.println("Result for searching for player with PlayerID " + searchID + ": FirstName :" + 
-//    				thePlay.getFirstName() + "LastName: " + 
-//    				thePlay.getLastName());
-
-//    	//list all players
-//        List playerList = mgr.listPlayers();
-//        for (int i = 0; i < playerList.size(); i++) {
-//            Player thePlayer = (Player) playerList.get(i);
-//            System.out.println(
-//                    "Player: " + thePlayer.getFirstName() + thePlayer.getLastName()
-//            );
-//        }
-    	    	
-//    	//search for playerID
-//    	int plID = mgr.getPlayerID("Rut","Tjur");
-//    	
-//    	if (plID == -1)
-//    		System.out.println("Player not found!");
-//    	else
-//    		System.out.println("ID for Rut Tjur is " + plID);
-//    	
-        HibernateUtil.getSessionFactory().close();
-    }
- 
-    private void createAndStorePlayer(String firstName, String lastName) {
+    public void createAndStorePlayer(String firstName, String lastName) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         
         try {
@@ -76,7 +42,7 @@ public class PlayerManager {
     }
 
     
-    private int getPlayerID(String firstName, String lastName) {
+    public int getPlayerID(String firstName, String lastName) {
     	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
     	try {    	
 	    	session.beginTransaction();
@@ -125,7 +91,7 @@ public class PlayerManager {
     	return thePlayer;
     }
     
-    private List listPlayers() {
+    public List listPlayers() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         List result = null;
         try {
